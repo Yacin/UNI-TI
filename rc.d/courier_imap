@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# $OpenBSD: courier_imap.rc,v 1.5 2011/03/20 13:06:23 ajacoutot Exp $
+
+daemon="/usr/local/libexec/imapd.rc"
+
+. /etc/rc.d/rc.subr
+
+pexp=".*courierlogger.*imapd.pid"
+
+rc_start() {
+	${rcexec} "${daemon} start"
+}
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

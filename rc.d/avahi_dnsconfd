@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# $OpenBSD: avahi_dnsconfd.rc,v 1.7 2011/12/17 22:01:13 sthen Exp $
+
+daemon="/usr/local/sbin/avahi-dnsconfd -D"
+
+. /etc/rc.d/rc.subr
+
+rc_check() {
+	${daemon} --check
+}
+
+rc_reload() {
+	${daemon} --refresh
+}
+
+rc_stop() {
+	${daemon} --kill
+}
+
+rc_cmd $1

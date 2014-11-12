@@ -1,0 +1,35 @@
+# Do not edit -- this file documents how Postfix was built for your machine.
+# System-dependent settings and compiler/linker overrides.
+SYSTYPE	= OPENBSD5
+_AR	= ar
+ARFL	= rv
+_RANLIB	= ranlib
+SYSLIBS	= -lssl -lcrypto -lsqlite3 -pthread -L/usr/local/lib -Wl,-R/usr/local/lib -lpcre 
+CC	= cc -I. -I../../include -I. -I../../include -DDEF_CONFIG_DIR=\"/etc/postfix\" -DDEF_DATA_DIR=\"/var/postfix\" -DHAS_SQLITE -DUSE_TLS -DUSE_SASL_AUTH -DHAS_PCRE -I/usr/local/include -DSNAPSHOT -UUSE_DYNAMIC_LIBS -DDEF_SHLIB_DIR=\"no\" -UUSE_DYNAMIC_MAPS 
+OPT	= -O2 -pipe 
+DEBUG	= 
+AWK	= awk
+STRCASE = 
+EXPORT	= CCARGS='-I. -I../../include -I. -I../../include -DDEF_CONFIG_DIR=\"/etc/postfix\" -DDEF_DATA_DIR=\"/var/postfix\" -DHAS_SQLITE -DUSE_TLS -DUSE_SASL_AUTH -DHAS_PCRE -I/usr/local/include -DSNAPSHOT -UUSE_DYNAMIC_LIBS -DDEF_SHLIB_DIR=\"no\" -UUSE_DYNAMIC_MAPS' OPT='-O2 -pipe ' DEBUG=''
+WARN	= -Wall -Wno-comment -Wformat -Wimplicit -Wmissing-prototypes \
+	-Wparentheses -Wstrict-prototypes -Wswitch -Wuninitialized \
+	-Wunused -Wno-missing-braces
+DEFINED_MAP_TYPES = sqlite pcre
+MAKE_FIX = 
+# Switch between Postfix static and shared libraries.
+AR	= ar
+RANLIB	= ranlib
+LIB_PREFIX = 
+LIB_SUFFIX = .a
+SHLIB_CFLAGS = 
+SHLIB_DIR = no
+SHLIB_LD = :
+SHLIB_RPATH = 
+# Switch between dynamicmaps.cf plugins and hard-linked databases.
+NON_PLUGIN_MAP_OBJ = $(MAP_OBJ)
+PLUGIN_MAP_OBJ = 
+PLUGIN_MAP_OBJ_UPDATE = 
+PLUGIN_MAP_SO_MAKE = 
+PLUGIN_MAP_SO_UPDATE = 
+PLUGIN_LD = 
+# Application-specific rules.

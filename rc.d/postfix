@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# $OpenBSD: postfix.rc,v 1.4 2012/04/11 08:34:55 sthen Exp $
+
+daemon="/usr/local/libexec/postfix/master"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon}"
+
+rc_start() {
+	/usr/local/sbin/postfix ${daemon_flags} start
+}
+
+rc_stop() {
+	/usr/local/sbin/postfix stop
+}
+
+rc_cmd $1

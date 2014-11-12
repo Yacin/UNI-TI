@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# $OpenBSD: avahi_daemon.rc,v 1.7 2011/12/17 22:01:13 sthen Exp $
+
+daemon="/usr/local/sbin/avahi-daemon -D"
+
+. /etc/rc.d/rc.subr
+
+rc_check() {
+	${daemon} --check
+}
+
+rc_reload() {
+	${daemon} --reload
+}
+
+rc_stop() {
+	${daemon} --kill
+}
+
+rc_cmd $1

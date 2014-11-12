@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# $OpenBSD: dbus_daemon.rc,v 1.12 2013/08/10 15:47:06 ajacoutot Exp $
+
+daemon="/usr/local/bin/dbus-daemon --system"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	[ ! -h /var/db/dbus/machine-id ] && \
+		ln -sf /etc/machine-id /var/db/dbus/machine-id
+	rm -f /var/run/dbus/pid
+	install -d -o _dbus -g _dbus /var/run/dbus
+}
+
+rc_cmd $1

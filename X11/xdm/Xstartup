@@ -1,0 +1,9 @@
+#!/bin/sh
+# 
+# $OpenBSD: Xstartup.cpp,v 1.5 2011/11/15 20:53:45 matthieu Exp $
+#
+if [ -f /etc/nologin ]; then
+        /usr/X11R6/bin/xmessage -file /etc/nologin -timeout 30 -center
+        exit 1
+fi
+exec /usr/X11R6/bin/sessreg  -a -w /var/log/wtmp -u /var/run/utmp 	-x /etc/X11/xdm/Xservers -l $DISPLAY -h "" $USER

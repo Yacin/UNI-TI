@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# $OpenBSD: apache2.rc,v 1.1 2014/07/27 10:51:37 kili Exp $
+
+daemon="/usr/local/sbin/httpd2"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	rm -f /var/apache2/logs/{ssl_mutex,httpd.lock,accept.lock}.*
+}
+
+rc_cmd $1

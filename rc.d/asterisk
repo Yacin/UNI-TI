@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# $OpenBSD: asterisk.rc,v 1.3 2011/03/20 15:37:06 ajacoutot Exp $
+
+daemon="/usr/local/sbin/asterisk"
+
+. /etc/rc.d/rc.subr
+
+rc_start() {
+	${rcexec} "/usr/local/sbin/safe_asterisk"
+}
+
+rc_stop() {
+	${daemon} -rx "core stop now"
+}
+
+rc_cmd $1
